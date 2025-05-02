@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auzifan - Wedding Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Italianno&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+    <!-- Login Page -->
+    <div class="login-container" id="loginPage">
+        <div class="login-form">
+            <h2>Auzifan Admin</h2>
+            <form id="loginForm">
+                <input type="text" id="username" placeholder="Username" required>
+                <input type="password" id="password" placeholder="Password" required>
+                <button type="submit">Login</button>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Dashboard Page -->
+    <div id="dashboardPage" style="display: none; width: 100%;">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-brand">
+                AuziFan
+            </div>
+            <ul class="sidebar-menu">
+                <li>
+                    <a href="#" class="nav-link active" data-section="dashboard">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="nav-link" data-section="wedding-info">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>Wedding Information</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="nav-link" data-section="couple-info">
+                        <i class="fas fa-heart"></i>
+                        <span>Couple Information</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="nav-link" data-section="guest-list">
+                        <i class="fas fa-users"></i>
+                        <span>Guest List</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="nav-link" data-section="photo-gallery">
+                        <i class="fas fa-images"></i>
+                        <span>Photo Gallery</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="nav-link" data-section="story">
+                        <i class="fas fa-book-open"></i>
+                        <span>Story</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="nav-link" data-section="settings">
+                        <i class="fas fa-cog"></i>
+                        <span>Settings</span>
+                    </a>
+                </li>
+            </ul>
+            <a href="#" class="logout" id="logoutBtn">
+                <i class="fas fa-sign-out-alt"></i> Logout
+            </a>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="header">
+                <h1>Auzifan Wedding Dashboard</h1>
+                <div class="user-info">
+                    <img src="img/MyLove.jpg" alt="Admin">
+                    <span>Chierru</span>
+                </div>
+            </div>
+            
+            <!-- Dashboard Section -->
+            <div class="content-section active" id="dashboard">
+                <div class="cards">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Total Guests</h3>
+                            <div class="card-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="number">120</div>
+                            <div class="card-name">All invited guests</div>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Attending</h3>
+                            <div class="card-icon" style="background-color: #2ecc71;">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="number">85</div>
+                            <div class="card-name">Confirmed attendance</div>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Not Attending</h3>
+                            <div class="card-icon" style="background-color: #e74c3c;">
+                                <i class="fas fa-times-circle"></i>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="number">35</div>
+                            <div class="card-name">Cannot attend</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="invitation-link">
+                    <h3>Invitation Link</h3>
+                    <div class="link-container">
+                        <input type="text" id="inviteLink" value="https://auzifan.my.id" readonly>
+                        <button class="copy-btn" onclick="copyInviteLink()">Copy</button>
+                    </div>
+                    <p>Share this link with your guests to access the digital invitation.</p>
+                </div>
+            </div>
+            
+            <!-- Wedding Information Section -->
+            <div class="content-section" id="wedding-info">
+                <div class="form-container">
+                    <h3>Edit Wedding Information</h3>
+                    <form id="weddingInfoForm">
+                        <div class="form-group">
+                            <label for="weddingDate">Wedding Date</label>
+                            <input type="date" id="weddingDate" value="2025-06-15">
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="ceremonyTime">Ceremony Time</label>
+                                <input type="time" id="ceremonyTime" value="10:00">
+                            </div>
+                            <div class="form-group">
+                                <label for="receptionTime">Reception Time</label>
+                                <input type="time" id="receptionTime" value="12:00">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="venueAddress">Venue Address</label>
+                            <textarea id="venueAddress">Grand Ballroom, Luxury Hotel, Jl. Puncak Indah No. 123, Jakarta</textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="gmapsLink">Google Maps Link</label>
+                            <input type="url" id="gmapsLink" value="https://goo.gl/maps/example123">
+                        </div>
+                        <button type="submit" class="submit-btn">Save Changes</button>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- Couple Information Section -->
+            <div class="content-section" id="couple-info">
+                <div class="form-container">
+                    <h3>Edit Groom Information</h3>
+                    <form id="groomInfoForm">
+                        <div class="form-group">
+                            <label for="groomPhoto">Groom Photo</label>
+                            <input type="file" id="groomPhoto">
+                            <div style="margin-top: 10px;">
+                                <img src="img/alfan.png" alt="Groom" style="width: 100px; height: 100px; object-fit: cover; border-radius: 50%;">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="groomName">Groom Full Name</label>
+                            <input type="text" id="groomName" value="Alfanshuri">
+                        </div>
+                        <div class="form-group">
+                            <label for="groomFatherName">Father's Name</label>
+                            <input type="text" id="groomFatherName" value="Adi Gunawan">
+                        </div>
+                        <div class="form-group">
+                            <label for="groomMotherName">Mother's Name</label>
+                            <input type="text" id="groomMotherName" value="Ibu Suci">
+                        </div>
+                        <button type="submit" class="submit-btn">Save Changes</button>
+                    </form>
+                </div>
+                
+                <div class="form-container" style="margin-top: 20px;">
+                    <h3>Edit Bride Information</h3>
+                    <form id="brideInfoForm">
+                        <div class="form-group">
+                            <label for="bridePhoto">Bride Photo</label>
+                            <input type="file" id="bridePhoto">
+                            <div style="margin-top: 10px;">
+                                <img src="img/auzia.png" alt="Bride" style="width: 100px; height: 100px; object-fit: cover; border-radius: 50%;">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="brideName">Bride Full Name</label>
+                            <input type="text" id="brideName" value="Azuia Natasa">
+                        </div>
+                        <div class="form-group">
+                            <label for="brideFatherName">Father's Name</label>
+                            <input type="text" id="brideFatherName" value="Bapak Faiz ">
+                        </div>
+                        <div class="form-group">
+                            <label for="brideMotherName">Mother's Name</label>
+                            <input type="text" id="brideMotherName" value="Ibu Nadia">
+                        </div>
+                        <button type="submit" class="submit-btn">Save Changes</button>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- Guest List Section -->
+            <div class="content-section" id="guest-list">
+                <div class="form-container">
+                    <div class="search-bar">
+                        <input type="text" id="searchGuest" placeholder="Search by name, email or phone...">
+                        <button class="search-btn"><i class="fas fa-search"></i> Search</button>
+                    </div>
+                    <button class="submit-btn" id="addGuestBtn" style="margin-bottom: 20px;">
+                        <i class="fas fa-plus"></i> Add New Guest
+                    </button>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Phone</th>
+                                    <th>Attendance</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Budi Santoso</td>
+                                    <td>budi@example.com</td>
+                                    <td>08123456789</td>
+                                    <td>Attending</td>
+                                    <td>
+                                        <button class="action-btn edit-btn"><i class="fas fa-edit"></i></button>
+                                        <button class="action-btn delete-btn"><i class="fas fa-trash"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Ani Wijaya</td>
+                                    <td>ani@example.com</td>
+                                    <td>08234567890</td>
+                                    <td>Not Attending</td>
+                                    <td>
+                                        <button class="action-btn edit-btn"><i class="fas fa-edit"></i></button>
+                                        <button class="action-btn delete-btn"><i class="fas fa-trash"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Dewi Anggara</td>
+                                    <td>dewi@example.com</td>
+                                    <td>08345678901</td>
+                                    <td>Pending</td>
+                                    <td>
+                                        <button class="action-btn edit-btn"><i class="fas fa-edit"></i></button>
+                                        <button class="action-btn delete-btn"><i class="fas fa-trash"></i></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <!-- Add/Edit Guest Modal -->
+                <div id="guestModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); z-index: 1000; align-items: center; justify-content: center;">
+                    <div style="background-color: white; width: 500px; max-width: 90%; border-radius: 5px; padding: 20px;">
+                        <h3 id="modalTitle">Add New Guest</h3>
+                        <form id="guestForm">
+                            <div class="form-group">
+                                <label for="guestName">Full Name</label>
+                                <input type="text" id="guestName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="guestEmail">Email</label>
+                                <input type="email" id="guestEmail" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="guestPhone">Phone Number</label>
+                                <input type="tel" id="guestPhone" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="guestAttendance">Attendance Status</label>
+                                <select id="guestAttendance">
+                                    <option value="pending">Pending</option>
+                                    <option value="attending">Attending</option>
+                                    <option value="notAttending">Not Attending</option>
+                                </select>
+                            </div>
+                            <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px;">
+                                <button type="button" id="cancelGuestBtn" style="background-color: #95a5a6; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">Cancel</button>
+                                <button type="submit" class="submit-btn">Save</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Photo Gallery Section -->
+            <div class="content-section" id="photo-gallery">
+                <div class="form-container">
+                    <h3>Edit Photo Gallery</h3>
+                    <p>Upload and manage photos for your wedding gallery.</p><div class="gallery">
+                        <div class="gallery-item">
+                            <img src="img/AA01.jpg" alt="Wedding Photo 1">
+                            <div class="overlay">
+                                <button class="overlay-btn"><i class="fas fa-edit"></i></button>
+                                <button class="overlay-btn"><i class="fas fa-trash"></i></button>
+                            </div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="img/AA1.JPG" alt="Wedding Photo 2">
+                            <div class="overlay">
+                                <button class="overlay-btn"><i class="fas fa-edit"></i></button>
+                                <button class="overlay-btn"><i class="fas fa-trash"></i></button>
+                            </div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="img/AA00.jpg" alt="Wedding Photo 3">
+                            <div class="overlay">
+                                <button class="overlay-btn"><i class="fas fa-edit"></i></button>
+                                <button class="overlay-btn"><i class="fas fa-trash"></i></button>
+                            </div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="img/AA01.jpg" alt="Wedding Photo 4">
+                            <div class="overlay">
+                                <button class="overlay-btn"><i class="fas fa-edit"></i></button>
+                                <button class="overlay-btn"><i class="fas fa-trash"></i></button>
+                            </div>
+                        </div>
+                        <div class="add-photo" id="addPhotoBtn">
+                            <i class="fas fa-plus"></i>
+                            <span>Add Photo</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Story Section -->
+            <div class="content-section" id="story">
+                <div class="form-container">
+                    <h3>Edit Love Story</h3>
+                    <p>Share your journey together with your guests.</p>
+                    
+                    <div class="timeline">
+                        <!-- Section 1 -->
+                        <div class="timeline-item">
+                            <div class="timeline-content">
+                                <button class="timeline-edit" data-section="1"><i class="fas fa-edit"></i></button>
+                                <div class="timeline-date">First Meeting</div>
+                                <img src="img/AA00.jpg" alt="First Meeting" class="timeline-img">
+                                <p class="timeline-text">We first met at a university event in 2018. It was a chance encounter that changed our lives forever. We bonded over our shared love for music and photography.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Section 2 -->
+                        <div class="timeline-item">
+                            <div class="timeline-content">
+                                <button class="timeline-edit" data-section="2"><i class="fas fa-edit"></i></button>
+                                <div class="timeline-date">Dating Period</div>
+                                <img src="img/AA01.jpg" alt="Dating Period" class="timeline-img">
+                                <p class="timeline-text">After months of friendship, we started dating in 2019. We went on many adventures together, traveled to beautiful places, and created memories that will last a lifetime.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Section 3 -->
+                        <div class="timeline-item">
+                            <div class="timeline-content">
+                                <button class="timeline-edit" data-section="3"><i class="fas fa-edit"></i></button>
+                                <div class="timeline-date">The Proposal</div>
+                                <img src="img/AA1.JPG" alt="Proposal" class="timeline-img">
+                                <p class="timeline-text">On a beautiful sunset at the beach, he got down on one knee and asked the question. With tears of joy, she said yes! That day marked the beginning of our journey towards forever.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Edit Story Modal -->
+                <div id="storyModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); z-index: 1000; align-items: center; justify-content: center;">
+                    <div style="background-color: white; width: 600px; max-width: 90%; border-radius: 5px; padding: 20px; max-height: 90vh; overflow-y: auto;">
+                        <h3 id="storyModalTitle">Edit Story Section</h3>
+                        <form id="storyForm">
+                            <div class="form-group">
+                                <label for="storyTitle">Section Title</label>
+                                <input type="text" id="storyTitle" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="storyPhoto">Section Photo</label>
+                                <input type="file" id="storyPhoto">
+                                <div style="margin-top: 10px;">
+                                    <img src="/api/placeholder/400/200" alt="Story Photo" style="width: 100%; height: 200px; object-fit: cover; border-radius: 5px;">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="storyText">Story Content</label>
+                                <textarea id="storyText" rows="5" required></textarea>
+                            </div>
+                            <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px;">
+                                <button type="button" id="cancelStoryBtn" style="background-color: #95a5a6; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">Cancel</button>
+                                <button type="submit" class="submit-btn">Save Changes</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Settings Section -->
+            <div class="content-section" id="settings">
+                <div class="form-container">
+                    <h3>Account Settings</h3>
+                    <form id="settingsForm">
+                        <div class="form-group">
+                            <label for="adminUsername">Username</label>
+                            <input type="text" id="adminUsername" value="admin" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="adminEmail">Email</label>
+                            <input type="email" id="adminEmail" value="admin@auzifan.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="currentPassword">Current Password</label>
+                            <input type="password" id="currentPassword" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="newPassword">New Password</label>
+                            <input type="password" id="newPassword">
+                        </div>
+                        <div class="form-group">
+                            <label for="confirmPassword">Confirm New Password</label>
+                            <input type="password" id="confirmPassword">
+                        </div>
+                        <button type="submit" class="submit-btn">Save Changes</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="dashboard.js"></script>
+</body>
+</html>

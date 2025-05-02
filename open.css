@@ -1,0 +1,81 @@
+:root {
+    --navy: #3E4F7F;
+    --abu: #C4C4C4;
+    --putih: #FFFFFF;
+    --bg: #3E4F7F;
+    --shadow: 0 2px 2px rgb(0 0 0 / 0.5);
+}
+
+body {
+    font-size: 1.2rem;
+    font-family: poppins;
+}
+
+/* Hero Section */
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('img/AA2.png') no-repeat center center/cover;
+    z-index: -1;
+}
+
+.hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+}
+
+
+/* Judul */
+.hero h1 {
+    font-family: 'Italianno', cursive;
+    font-size: 5rem;
+}
+
+/* Deskripsi */
+.hero p {
+    font-size: 1rem;
+    top: -20%;
+}
+
+/* Tombol */
+.hero a {
+    color: var(--abu);
+    background-color: var(--navy);
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.hero a:hover {
+    background-color: var(--putih);
+    color: var(--navy);
+}
+
+.hero h5{
+    font-weight: bold;
+}
+
+.hero .lgn {
+    display: inline-block;
+    font-size: 1rem;
+    padding: 8px 20px;
+    border-radius: 5px;
+    margin-top: 10px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.hero .lgn:hover {
+    background-color: var(--putih);
+    color: var(--navy);
+}
